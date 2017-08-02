@@ -1,0 +1,30 @@
+<div class="container" id="currencyTable" ng-show="show">
+
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>
+					<a href="" ng-click="sortType = 'currency'; sortReverse = !sortReverse">Currency</a>
+				</th>
+				<th>
+					<a href="" ng-click="sortType = 'rate'; sortReverse = !sortReverse">Exchange Rate</a>
+				</th>
+				<th>
+					<a href="" ng-click="sortType = 'diff'; sortReverse = !sortReverse">Percentage Diff</a>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="rate in currenciesStripped | orderBy:sortType:sortReverse">
+				<td ng-class="{'highlighted' : rate.diff == max}">{{rate.currency}}</td>
+				<td ng-class="{'highlighted' : rate.diff == max}">{{formatNumber(rate.rate)}}</td>
+				<td ng-class="{'highlighted' : rate.diff == max}">{{formatNumber(rate.diff)}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</div>
+
+
+<!-- ['2017-01-01'].rates -->
